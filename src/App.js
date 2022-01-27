@@ -1,6 +1,33 @@
 import React from 'react';
 import './App.css';
 
+function App() {
+  const [todos, setTodos] = React.useState([
+    { text: "Learn about React",
+      isCompleted: false},
+    { text: "Meet friend for lunch",
+      isCompleted: false },
+    { text: "Build really cool todo app",
+      isCompleted: false }
+  ]);
+
+  const addTodo = text => {
+    const newTodos = [...todos, { text }];
+    setTodos(newTodos);
+  };
+
+  const completeTodo = index => {
+    const newTodos = [...todos];
+    newTodos[index].isCompleted = true;
+    setTodos(newTodos);
+  };
+
+  const removeTodo = index => {
+    const newTodos = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
+
 function Todo({ todo, index, completeTodo }) {
   return (
     <div 
@@ -40,32 +67,7 @@ function TodoForm({ addTodo }) {
 }
 
 
-function App() {
-  const [todos, setTodos] = React.useState([
-    { text: "Learn about React",
-      isCompleted: false},
-    { text: "Meet friend for lunch",
-      isCompleted: false },
-    { text: "Build really cool todo app",
-      isCompleted: false }
-  ]);
 
-  const addTodo = text => {
-    const newTodos = [...todos, { text }];
-    setTodos(newTodos);
-  };
-
-  const completeTodo = index => {
-    const newTodos = [...todos];
-    newTodos[index].isCompleted = true;
-    setTodos(newTodos);
-  };
-
-  const removeTodo = index => {
-    const newTodos = [...todos];
-    newTodos.splice(index, 1);
-    setTodos(newTodos);
-  };
 
   
   return (
